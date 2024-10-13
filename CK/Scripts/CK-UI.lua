@@ -439,6 +439,7 @@ function updateGauges()
     local color = getPowerlevelColor(powerPercentage)
 
     bars["powerGauge"]:setStyleSheet([[background-color: ]] .. color .. [[;]])
+    bars["powerGauge"].back:setStyleSheet([[background-color: black;]])
     bars["powerGauge"]:setValue(powerPercentage)
     bars["powerGauge"]:setText("&lt;b&gt;PL: " .. formatWithCommas(CK.Player.Pl) .. " / " .. formatWithCommas(CK.Player.MaxPl) .. " ( " .. tostring(math.floor((CK.Player.Pl / CK.Player.MaxPl) * 100)) .. "% )&lt;/b&gt;")
     
