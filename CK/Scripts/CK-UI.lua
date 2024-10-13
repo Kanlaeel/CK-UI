@@ -761,7 +761,7 @@ tarStatsLabel:echo(tarInfoText)
 tarStatsLabel:raise()  
 
 function updateTargetInfo()
-    if CK.Target.MaxHealth &gt; 0 then
+    if CK.Target.level &gt; 0 then
         -- Update the power gauge
         bars["tarPowerGauge"]:setValue(CK.Target.Health, CK.Target.MaxHealth)
         bars["tarPowerGauge"]:setText("Powerlevel: " .. CK.Target.Health .. " / " .. CK.Target.MaxHealth)
