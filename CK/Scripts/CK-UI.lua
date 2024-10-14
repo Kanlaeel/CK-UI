@@ -515,23 +515,37 @@ borderLabel:setStyleSheet([[
 
 local playerInfoLabel = Geyser.Label:new({
     name = "playerInfoLabel",
-    x = "17%", y = "90%",
-    width = "12%", height = "10%",
+    x = "15.5%", y = "90%",
+    width = "14%", height = "10%",
 }, playerInfoContainer)
 
 local playerInfoText = string.format([[
-    &lt;div style="display: flex; justify-content: center; align-items: center; height: 100%%;"&gt;
-        &lt;table style="width: 80%%; border-spacing: 10px; text-align: left;"&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Name:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Race:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Base PL:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Zenni:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
+        <table style="width: 100%%; border-spacing: 10px; text-align: left;">
+            <tr>
+                <td style="padding-right: 30px;"><b>Name:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 30px;"><b>State:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 30px;"><b>Race:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 30px;"><b>Mode:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 30px;"><b>Base PL:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 30px;"><b>Gravity:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 30px;"><b>Zenni:</b></td><td><b>%s</b></td>
+            </tr>
+        </table>
+    </div>
 ]], 
     CK.Player.name, 
+    CK.API.State:toString(), -- Fetch the player's state
     CK.Player.race, 
-    formatWithCommas(CK.Player.BasePl), 
+    CK.API.Mode:toString(),  -- Fetch the player's mode
+    formatWithCommas(CK.Player.BasePl),
+    formatWithCommas(CK.Room.Gravity), 
     formatWithCommas(CK.Player.Zenni)
 )
 
@@ -545,18 +559,32 @@ playerInfoLabel:echo(playerInfoText)
 
 function updatePlayerInfo()
     local updatedPlayerInfoText = string.format([[
-    &lt;div style="display: flex; justify-content: center; align-items: center; height: 100%%;"&gt;
-        &lt;table style="width: 80%%; border-spacing: 10px; text-align: left;"&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Name:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Race:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Base PL:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-            &lt;tr&gt;&lt;td style="padding-right: 50px;"&gt;&lt;b&gt;Zenni:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
+        <table style="width: 100%%; border-spacing: 10px; text-align: left;">
+            <tr>
+                <td style="padding-right: 5px;"><b>Name:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 5px;"><b>State:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>Race:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 5px;"><b>Mode:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>Base PL:</b></td><td><b>%s</b></td>
+                <td style="padding-right: 5px;"><b>Gravity:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>Zenni:</b></td><td><b>%s</b></td>
+            </tr>
+        </table>
+    </div>
     ]], 
     CK.Player.name, 
+    CK.API.State:toString(),
     CK.Player.race, 
+    CK.API.Mode:toString(),
     formatWithCommas(CK.Player.BasePl), 
+    formatWithCommas(CK.Room.Gravity),
     formatWithCommas(CK.Player.Zenni))
 
     playerInfoLabel:echo(updatedPlayerInfoText)
@@ -595,8 +623,8 @@ borderLabel:setStyleSheet([[
 
 local statsLabel = Geyser.Label:new({
     name = "statsLabel",
-    x = "31%", y = "90%",
-    width = "13%", height = "10%",
+    x = "30.5%", y = "90%",
+    width = "14%", height = "10%",
 }, statsContainer)
 
 local statsText = string.format([[
