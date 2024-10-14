@@ -628,34 +628,34 @@ local statsLabel = Geyser.Label:new({
 }, statsContainer)
 
 local statsText = string.format([[
-&lt;div style="display: flex; justify-content: center; align-items: center; height: 100%%;"&gt;
-    &lt;table style="width: 100%%; text-align: left;"&gt;
-        &lt;tr&gt;
-            &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;INT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;UBS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;  &lt;!-- Added padding-left for spacing --&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;ARM:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;  &lt;!-- Added padding-left --&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;STR:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;LBS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;HIT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;SPD:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;HUNG:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;DAM:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;WIS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;THISRT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;GRAV:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
+<div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
+    <table style="width: 100%%; text-align: left;">
+        <tr>
+            <td style="padding-right: 5px;"><b>STR:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>UBS:</b></td><td><b>%s</b></td>  <!-- Added padding-left for spacing -->
+            <td style="padding-left: 18px; padding-right: 5px;"><b>ARM:</b></td><td><b>%s</b></td>  <!-- Added padding-left -->
+        </tr>
+        <tr>
+            <td style="padding-right: 5px;"><b>SPD:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>LBS:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>HIT:</b></td><td><b>%s</b></td>
+        </tr>
+        <tr>
+            <td style="padding-right: 5px;"><b>INT:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>HUNG:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>DAM:</b></td><td><b>%s</b></td>
+        </tr>
+        <tr>
+            <td style="padding-right: 5px;"><b>WIS:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>THISRT:</b></td><td><b>%s</b></td>
+            <td style="padding-left: 18px; padding-right: 5px;"><b>GRAV:</b></td><td><b>%s</b></td>
+        </tr>
+    </table>
+</div>
 ]], 
-    CK.Player.Stats.INT, CK.Player.UBS, CK.Player.Armor, 
-    CK.Player.Stats.STR, CK.Player.LBS, CK.Player.Hitroll, 
-    CK.Player.Stats.SPD, CK.Player.Hunger, CK.Player.Damroll, 
+    CK.Player.Stats.STR, CK.Player.UBS, CK.Player.Armor, 
+    CK.Player.Stats.SPD, CK.Player.LBS, CK.Player.Hitroll, 
+    CK.Player.Stats.INT, CK.Player.Hunger, CK.Player.Damroll, 
     CK.Player.Stats.WIS, CK.Player.Thirst, CK.Player.MaxGravity
 )
 
@@ -669,38 +669,40 @@ statsLabel:echo(statsText)
 
 function updateStats()
     local updatedStatsText = string.format([[
-    &lt;div style="display: flex; justify-content: center; align-items: center; height: 100%%;"&gt;
-        &lt;table style="width: 100%%; text-align: left;"&gt;
-            &lt;tr&gt;
-                &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;INT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;UBS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;ARM:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;STR:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;LBS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;HIT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;SPD:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;HUNG:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;DAM:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td style="padding-right: 5px;"&gt;&lt;b&gt;WIS:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;THISRT:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-                &lt;td style="padding-left: 15px; padding-right: 5px;"&gt;&lt;b&gt;GRAV:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
+        <table style="width: 100%%; text-align: left;">
+            <tr>
+                <td style="padding-right: 5px;"><b>STR:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>UBS:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>ARM:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>SPD:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>LBS:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>HIT:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>INT:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>HUNG:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>DAM:</b></td><td><b>%s</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 5px;"><b>WIS:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>THISRT:</b></td><td><b>%s</b></td>
+                <td style="padding-left: 18px; padding-right: 5px;"><b>GRAV:</b></td><td><b>%s</b></td>
+            </tr>
+        </table>
+    </div>
     ]], 
-    CK.Player.Stats.INT, CK.Player.UBS, CK.Player.Armor, 
-    CK.Player.Stats.STR, CK.Player.LBS, CK.Player.Hitroll, 
-    CK.Player.Stats.SPD, CK.Player.Hunger, CK.Player.Damroll, 
+    CK.Player.Stats.STR, CK.Player.UBS, CK.Player.Armor, 
+    CK.Player.Stats.SPD, CK.Player.LBS, CK.Player.Hitroll, 
+    CK.Player.Stats.INT, CK.Player.Hunger, CK.Player.Damroll, 
     CK.Player.Stats.WIS, CK.Player.Thirst, CK.Player.MaxGravity)
 
     statsLabel:echo(updatedStatsText)
 end
+
+updateStats()
 </script>
 					<eventHandlerList />
 				</Script>
